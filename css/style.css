@@ -861,5 +861,82 @@ ul.social_icon li a i:hover {
      color: #f3cf2d;
 }
 
+/**ANUNCIO**/
+/* Estilos para el anuncio emergente */
+.overlay {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background: rgba(0, 0, 0, 0.7);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     z-index: 1000;
+}
+
+.popup {
+     background-color: #fff;
+     padding: 20px;
+     border-radius: 8px;
+     width: 80%;
+     max-width: 400px;
+     text-align: center;
+}
+
+.anuncio-img {
+     max-width: 100%;
+     height: auto;
+     margin-bottom: 15px;
+}
+
+button {
+     padding: 10px 20px;
+     background-color: #007BFF;
+     color: white;
+     border: none;
+     border-radius: 5px;
+     cursor: pointer;
+}
+
+button:hover {
+     background-color: #0056b3;
+}
+
+
+/** BOLETINES**/
+/* Estilos generales */
+
+
+/* Estilo del botón */
+.boletin-btn {
+     background-color: #ff6b6b;
+     color: white;
+     padding: 15px 30px;
+     font-size: 18px;
+     font-weight: bold;
+     border: none;
+     border-radius: 50px;
+     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+     cursor: pointer;
+     transition: all 0.3s ease;
+     text-transform: uppercase;
+     letter-spacing: 1px;
+}
+
+/* Efecto hover (cuando el ratón pasa sobre el botón) */
+.boletin-btn:hover {
+     background-color: #ff4c4c;
+     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+     transform: translateY(-2px);
+}
+
+/* Efecto de clic (cuando el botón es presionado) */
+.boletin-btn:active {
+     background-color: #e63946;
+     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+     transform: translateY(1px);
+}
 
 /** end footer **/
