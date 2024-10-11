@@ -940,3 +940,13 @@ button:hover {
 }
 
 /** end footer **/
+/**whatsapp**/
+ .redes img {
+     width: 100px;
+     padding: 0;
+     height: 60px;
+     left: 0;
+     position: fixed;
+     z-index: 50;
+     bottom: 10px;
+ }
