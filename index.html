@@ -182,12 +182,39 @@
             </div>
          </div>
       </div>
-   </div>
-   <h2 class="col-md-6 offset-md-1">visualizar</h2>
-
-     <button class="boletin-btn" id="subscribeButton"><a href="./tablas.pdf" download>Descargar PDF TABLAS PREINFANTIL</a></button> <br> <br>
+      <!--boletines-->
+          <button class="boletin-btn" id="subscribeButton"><a href="./tablas.pdf" download>Descargar PDF TABLAS PREINFANTIL</a></button> <br> <br>
    <!-- Botón de suscripción al boletín -->
    <button class="boletin-btn" id="subscribeButton"> <a href="aaaa.html">ver los boletines</a></button>
+   </div>
+
+ <!--CALENDARIO-->
+   
+   <div class="calendar-container">
+      <div class="calendar-header">
+         <button id="prevMonth" class="nav-btn">« Mes Anterior</button>
+         <span id="currentMonthYear" class="month-year"></span>
+         <button id="nextMonth" class="nav-btn">Mes Siguiente »</button>
+      </div>
+      <div class="calendar-body">
+         <div class="days-of-week">
+            <div>Lun</div>
+            <div>Mar</div>
+            <div>Mié</div>
+            <div>Jue</div>
+            <div>Vie</div>
+            <div>Sáb</div>
+            <div>Dom</div>
+         </div>
+         <div id="daysGrid" class="days-grid"></div>
+      </div>
+   </div>
+   
+   <!--CALENDARIO-->
+   
+   <!-- Vincula el archivo JavaScript -->
+   <script src="script.js"></script>
+ 
    
    <!-- Vincula el archivo JavaScript -->
    <script src="script.js"></script>
@@ -411,6 +438,79 @@
    <script>
       window.sntchChat.Init(398034)
    </script>
+   <!--CALENDARIO-->
+<script>
+   const daysOfWeek = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'];
+      let currentDate = new Date();
+
+      const prevMonthBtn = document.getElementById('prevMonth');
+      const nextMonthBtn = document.getElementById('nextMonth');
+      const monthYearDisplay = document.getElementById('currentMonthYear');
+      const daysGrid = document.getElementById('daysGrid');
+
+      // Función para renderizar el calendario
+      function renderCalendar() {
+         const month = currentDate.getMonth();
+         const year = currentDate.getFullYear();
+
+         // Mostrar el mes y el año
+         monthYearDisplay.textContent = `${getMonthName(month)} ${year}`;
+
+         // Vaciar la cuadrícula de días
+         daysGrid.innerHTML = '';
+
+         // Día 1 del mes
+         const firstDayOfMonth = new Date(year, month, 1);
+         const lastDayOfMonth = new Date(year, month + 1, 0);
+         const totalDaysInMonth = lastDayOfMonth.getDate();
+         const startingDay = firstDayOfMonth.getDay() === 0 ? 6 : firstDayOfMonth.getDay() - 1; // Ajustar para empezar en lunes
+
+         // Rellenar los días del mes en la cuadrícula
+         for (let i = 0; i < startingDay; i++) {
+            const emptyCell = document.createElement('div');
+            daysGrid.appendChild(emptyCell);
+         }
+
+         for (let day = 1; day <= totalDaysInMonth; day++) {
+            const dayElement = document.createElement('div');
+            dayElement.classList.add('day');
+            dayElement.textContent = day;
+
+            // Evento de selección de día
+            dayElement.addEventListener('click', () => {
+               dayElement.classList.toggle('selected');
+            });
+
+            daysGrid.appendChild(dayElement);
+         }
+      }
+
+      // Función para obtener el nombre del mes
+      function getMonthName(monthIndex) {
+         const months = [
+            'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+            'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+         ];
+         return months[monthIndex];
+      }
+
+      // Navegar al mes anterior
+      prevMonthBtn.addEventListener('click', () => {
+         currentDate.setMonth(currentDate.getMonth() - 1);
+         renderCalendar();
+      });
+
+      // Navegar al mes siguiente
+      nextMonthBtn.addEventListener('click', () => {
+         currentDate.setMonth(currentDate.getMonth() + 1);
+         renderCalendar();
+      });
+
+      // Inicializar el calendario
+      renderCalendar();
+   
+</script>
+<!---CALENDARIO-->
 </body>
 
 </html>
